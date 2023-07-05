@@ -17,6 +17,10 @@ function Table(nRow,nColumn){
 
   function tableClicked(nCella){
     if(!clickedCells[nCella-1].clicked){
+      clickedCells[nCella-1].clicked=true;
+      team =! team;
+      console.log("È stata cliccata la casella "+nCella);
+      
       let char;
       if(team){
         char="o";
@@ -25,11 +29,8 @@ function Table(nRow,nColumn){
         char="x";
       }
 
-      document.getElementById(nCella+"").innerHTML= "<td nameClass=\""+char+"\">"+char+"</td>"
+      document.getElementById(nCella).innerHTML= "<td nameClass=\""+char+"\">"+char+"</td>"
 
-      clickedCells[nCella-1].clicked=true;
-      team =! team;
-      console.log("È stata cliccata la casella "+nCella);
     }
   }
 

@@ -1,8 +1,8 @@
 import './App.css';
 
 function Table(nRow,nColumn){
-  const team=false;
-  const clickedCells = [
+  let team=false;
+  let clickedCells = [
     {id:1, clicked:false, team: "n"},
     {id:2, clicked:false, team: "n"},
     {id:3, clicked:false, team: "n"},
@@ -20,7 +20,6 @@ function Table(nRow,nColumn){
       clickedCells[nCella-1].clicked=true;
       team =! team;
       console.log("È stata cliccata la casella "+nCella);
-      
       let char;
       if(team){
         char="o";
@@ -29,7 +28,7 @@ function Table(nRow,nColumn){
         char="x";
       }
 
-      document.getElementById(nCella).innerHTML= "<td nameClass=\""+char+"\">"+char+"</td>"
+      document.getElementById(nCella).innerHTML= "<font color=\"red\"><td nameClass=\""+char+"\">"+char+"</td></font>"
 
     }
   }

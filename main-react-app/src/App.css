@@ -6,6 +6,17 @@
 }
 
 table{
+  font-family: 'Anonymous Pro', monospace;
   border: 1;
-  border-color: white;
+  background-color: white;
+}
+
+tr{
+  padding: 5px;
+  padding-left: 10px;
+}
+
+td{
+
+  padding: 5px;
 }

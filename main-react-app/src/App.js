@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import './Table.js';
-import './RecordTable.js';
-import './RamatchButton.js';
+import Table from './Table.js';
+import RecordTable from'./RecordTable.js';
+import RematchButton from'./RamatchButton.js';
 
 export default function App(){
 

@@ -15,8 +15,8 @@ export default function RecordTable(){
         </thead>
         <tbody>
             <tr>
-                <td></td>
-                <td></td>
+                <td>{xWins}</td>
+                <td>{oWins}</td>
             </tr>
         </tbody>
       </table>

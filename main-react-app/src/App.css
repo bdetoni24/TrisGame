@@ -10,6 +10,15 @@ body{
   margin-bottom: auto;
 }
 
+.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}
+
+
 #mainTable{
   background-color: transparent;
   margin-top: 50px;
@@ -19,17 +28,22 @@ body{
   margin-left: auto;
   margin-right: auto;
   font-size: 50px;
+  width: 500px;
+  height: 500px;
 }
 
-tr{
-  padding: 5px;
-  padding-left: 10px;
+#rematchButton{
+  background-color: white;
+  color: midnightblue;
+  font-size: 50px;
+  height: 80px;
+  width: 80px;
+  border-radius: 10px;
 }
 
 td{
   color:midnightblue;
   background-color: white;
-  padding: 50px;
   border-radius: 5px;
-  box-shadow: 10px 10px 5px #424f6391;
+  box-shadow: 10px 10px 5px #5a5a5ab2;
 }

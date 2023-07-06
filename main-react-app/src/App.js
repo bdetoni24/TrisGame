@@ -1,7 +1,10 @@
+import React, { useState } from 'react';
 import './App.css';
 
 function Table(nRow,nColumn){
   let team=false;
+  let showButton=false;
+  let nClick=0;
   let isEndGame=false;
   let clickedCells = [
     {id:1, clicked:false, team: 0},
@@ -20,12 +23,14 @@ function Table(nRow,nColumn){
     for(i=0;i<8;i++){
       clickedCells[i].team=0;
       document.getElementById(i).innerHTML = '<td id="'+i+'" onClick={()=>tableClicked('+i+')}>'+i+'</td>';
-      {/*Si potrebbe aggiungere una tabella record */}
+      
     }
+    nClick=0;
   }
 
   function tableClicked(nCella){
     if(!clickedCells[nCella-1].clicked && !isEndGame){
+      nClick++;
       clickedCells[nCella-1].clicked=true;
       team =! team;
       console.log("È stata cliccata la casella "+nCella);
@@ -48,26 +53,36 @@ function Table(nRow,nColumn){
 
   function checkWinner(team){
     let ret = false;
+    if(nClick!=9){
+      {/*Combinazioni verticali*/}
+      ret = Object.is(clickedCells[0].team, team) && Object.is(clickedCells[3].team, team) && Object.is(clickedCells[6].team, team);
+      ret = ret || (Object.is(clickedCells[1].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[7].team, team));
+      ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[5].team, team) && Object.is(clickedCells[8].team, team));
 
-    {/*Combinazioni verticali*/}
-    ret = Object.is(clickedCells[0].team, team) && Object.is(clickedCells[3].team, team) && Object.is(clickedCells[6].team, team);
-    ret = ret || (Object.is(clickedCells[1].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[7].team, team));
-    ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[5].team, team) && Object.is(clickedCells[8].team, team));
+      {/*Combinazioni orizzontali*/}
+      ret = ret || (Object.is(clickedCells[0].team, team) && Object.is(clickedCells[1].team, team) && Object.is(clickedCells[2].team, team));
+      ret = ret || (Object.is(clickedCells[3].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[5].team, team));
+      ret = ret || (Object.is(clickedCells[6].team, team) && Object.is(clickedCells[7].team, team) && Object.is(clickedCells[8].team, team));
 
-    {/*Combinazioni orizzontali*/}
-    ret = ret || (Object.is(clickedCells[0].team, team) && Object.is(clickedCells[1].team, team) && Object.is(clickedCells[2].team, team));
-    ret = ret || (Object.is(clickedCells[3].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[5].team, team));
-    ret = ret || (Object.is(clickedCells[6].team, team) && Object.is(clickedCells[7].team, team) && Object.is(clickedCells[8].team, team));
+      {/*Combinazioni diagonali*/}
+      ret = ret || (Object.is(clickedCells[0].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[8].team, team));
+      ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team));
 
-    {/*Combinazioni diagonali*/}
-    ret = ret || (Object.is(clickedCells[0].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[8].team, team));
-    ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team));
-
-    {/*È possibile confontare diverse stringhe? */}
-    {/*È possibile fare che la funzione restituirsca un boolean? */}
-    if (ret){
+      {/*È possibile confontare diverse stringhe? */}
+      {/*È possibile fare che la funzione restituirsca un boolean? */}
+      if (ret){
+        isEndGame=true;
+        document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Ha vinto il team '+team+'</h3>';
+        let buttonReset = document.getElementById("remachButton").style= "visibility: 'visible'";
+        tableReset();
+      }
+    }
+    else{
       isEndGame=true;
-      document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Ha vinto il team '+team+'</h3>';
+      document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Pareggio</h3>';
+      let divElement = document.getElementById('tempButton'); // Riferimento al div esistente
+      let buttonElement = document.createElement('button'); // Creazione del bottone
+      buttonElement.innerHTML = 'Il mio bottone';
     }
   }
 
@@ -98,14 +113,31 @@ function Table(nRow,nColumn){
   );
 }
 
+function RematchButton(){
+
+  return(
+    <div>
+      <button id="rematchButton" style={{visibility: 'hidden'}}>↻</button>
+    </div>
+  );
+}
+
+function RecordTable(){
+  return(
+    <table>
+
+    </table>
+  );
+}
+
 export default function App(){
 
   return( 
-    <div>
+    <div id="mainDiv">
       <h1>Tris Game</h1>
       <Table/>
       <h3 id="labelWinner"></h3>
-      <div id="tempButton"></div>
+      <RematchButton/>
     </div>
     );
 };

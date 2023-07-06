@@ -15,9 +15,17 @@ function Table(nRow,nColumn){
     {id:9, clicked:false, team: 0},
   ];
 
+  function tableReset(){
+    let i=0;
+    for(i=0;i<8;i++){
+      clickedCells[i].team=0;
+      document.getElementById(i).innerHTML = '<td id="'+i+'" onClick={()=>tableClicked('+i+')}>'+i+'</td>';
+      {/*Si potrebbe aggiungere una tabella record */}
+    }
+  }
 
   function tableClicked(nCella){
-    if(!clickedCells[nCella-1].clicked){
+    if(!clickedCells[nCella-1].clicked && !isEndGame){
       clickedCells[nCella-1].clicked=true;
       team =! team;
       console.log("È stata cliccata la casella "+nCella);
@@ -60,7 +68,6 @@ function Table(nRow,nColumn){
     if (ret){
       isEndGame=true;
       document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Ha vinto il team '+team+'</h3>';
-      
     }
   }
 
@@ -91,17 +98,14 @@ function Table(nRow,nColumn){
   );
 }
 
-
-
 export default function App(){
-
-
 
   return( 
     <div>
       <h1>Tris Game</h1>
       <Table/>
       <h3 id="labelWinner"></h3>
+      <div id="tempButton"></div>
     </div>
     );
 };

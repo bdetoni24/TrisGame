@@ -46,4 +46,7 @@ td{
   background-color: white;
   border-radius: 5px;
   box-shadow: 10px 10px 5px #5a5a5ab2;
+  width: 100px;
+  max-width: 100px;
+  height: 100px;
 }

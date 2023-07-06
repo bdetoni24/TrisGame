@@ -4,7 +4,7 @@ export default function RematchButton(){
 
     return(
       <div>
-        <button id="rematchButton" style={{visibility: 'hidden'}}>↻</button>
+        <button id="rematchButton">↻</button>
       </div>
     );
   }

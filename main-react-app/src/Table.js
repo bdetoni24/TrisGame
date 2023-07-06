@@ -91,19 +91,19 @@ export default function Table(nRow,nColumn){
           <thead></thead>
           <tbody>
             <tr>
-              <td id="1" onClick={()=>tableClicked(1)}>1</td>
-              <td id="2" onClick={()=>tableClicked(2)}>2</td>
-              <td id="3" onClick={()=>tableClicked(3)}>3</td>
+              <td id="1" onClick={()=>tableClicked(1)}></td>
+              <td id="2" onClick={()=>tableClicked(2)}></td>
+              <td id="3" onClick={()=>tableClicked(3)}></td>
             </tr>
             <tr>
-              <td id="4" onClick={()=>tableClicked(4)}>4</td>
-              <td id="5" onClick={()=>tableClicked(5)}>5</td>
-              <td id="6" onClick={()=>tableClicked(6)}>6</td>
+              <td id="4" onClick={()=>tableClicked(4)}></td>
+              <td id="5" onClick={()=>tableClicked(5)}></td>
+              <td id="6" onClick={()=>tableClicked(6)}></td>
             </tr>
             <tr>
-              <td id="7" onClick={()=>tableClicked(7)}>7</td>
-              <td id="8" onClick={()=>tableClicked(8)}>8</td>
-              <td id="9" onClick={()=>tableClicked(9)}>9</td>
+              <td id="7" onClick={()=>tableClicked(7)}></td>
+              <td id="8" onClick={()=>tableClicked(8)}></td>
+              <td id="9" onClick={()=>tableClicked(9)}></td>
             </tr>
           </tbody>
           <tfoot></tfoot>

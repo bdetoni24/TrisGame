@@ -1,6 +1,6 @@
 import './App.css'
 
-function RematchButton(){
+export default function RematchButton(){
 
     return(
       <div>

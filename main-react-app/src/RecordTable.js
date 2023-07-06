@@ -1,6 +1,6 @@
 import './App.css'
 
-function RecordTable(){
+export default function RecordTable(){
     return(
       <table>
         <thead>

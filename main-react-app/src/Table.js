@@ -1,6 +1,6 @@
 import './App.css';
 
-function Table(nRow,nColumn){
+export default function Table(nRow,nColumn){
     let team=false;
     let showButton=false;
     let nClick=0;

@@ -1,6 +1,9 @@
+import React, { useState } from 'react';
 import './App.css';
+import App from './App.js'
 
 export default function Table(nRow,nColumn){
+    const [teamName,setTeamName] = useState('o')
     let team=false;
     let showButton=false;
     let nClick=0;
@@ -45,8 +48,8 @@ export default function Table(nRow,nColumn){
           checkWinner(2);
         }
   
-        document.getElementById(nCella).innerHTML= "<font color=\"red\"><td nameClass=\""+char+"\">"+char+"</td></font>"
-        {/*Bisogna cambiare il colore del font delle lettere */}
+        let cell = document.getElementById(nCella)
+        cell.innerHTML = char
       }
     }
   
@@ -67,31 +70,24 @@ export default function Table(nRow,nColumn){
         ret = ret || (Object.is(clickedCells[0].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[8].team, team));
         ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team));
   
-        {/*È possibile confontare diverse stringhe? */}
-        {/*È possibile fare che la funzione restituirsca un boolean? */}
         if (ret){
           isEndGame=true;
           document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Ha vinto il team '+team+'</h3>';
-          let buttonReset = document.getElementById("remachButton").style= "visibility: 'visible'";
-          tableReset();
         }
       }
       else{
         isEndGame=true;
         document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Pareggio</h3>';
-        let divElement = document.getElementById('tempButton'); // Riferimento al div esistente
-        let buttonElement = document.createElement('button'); // Creazione del bottone
-        buttonElement.innerHTML = 'Il mio bottone';
       }
     }
-  
+
     return(
       <div>
         <table id="mainTable">
           <thead></thead>
           <tbody>
             <tr>
-              <td id="1" onClick={()=>tableClicked(1)}></td>
+              <td id="1" style={{color: isEndGame?'red,':'blue,'}} onClick={()=>tableClicked(1)}></td>
               <td id="2" onClick={()=>tableClicked(2)}></td>
               <td id="3" onClick={()=>tableClicked(3)}></td>
             </tr>

@@ -5,13 +5,19 @@ import RecordTable from'./RecordTable.js';
 import RematchButton from'./RamatchButton.js';
 
 export default function App(){
+  const [state, setState] = useState(false)
+
+  function buttonVisible(){
+    setState(true);
+  }
 
   return( 
     <div id="mainDiv">
       <h1>Tris Game</h1>
+      <RecordTable/>
       <Table/>
       <h3 id="labelWinner"></h3>
-      <RematchButton/>
+      {state?<RematchButton/>:""}
     </div>
     );
 };

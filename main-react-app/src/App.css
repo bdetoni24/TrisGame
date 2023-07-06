@@ -10,7 +10,7 @@ body{
   margin-bottom: auto;
 }
 
-table{
+#mainTable{
   background-color: transparent;
   margin-top: 50px;
   width: 33%;

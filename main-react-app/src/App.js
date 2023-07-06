@@ -2,16 +2,17 @@ import './App.css';
 
 function Table(nRow,nColumn){
   let team=false;
+  let isEndGame=false;
   let clickedCells = [
-    {id:1, clicked:false, team: "n"},
-    {id:2, clicked:false, team: "n"},
-    {id:3, clicked:false, team: "n"},
-    {id:4, clicked:false, team: "n"},
-    {id:5, clicked:false, team: "n"},
-    {id:6, clicked:false, team: "n"},
-    {id:7, clicked:false, team: "n"},
-    {id:8, clicked:false, team: "n"},
-    {id:9, clicked:false, team: "n"},
+    {id:1, clicked:false, team: 0},
+    {id:2, clicked:false, team: 0},
+    {id:3, clicked:false, team: 0},
+    {id:4, clicked:false, team: 0},
+    {id:5, clicked:false, team: 0},
+    {id:6, clicked:false, team: 0},
+    {id:7, clicked:false, team: 0},
+    {id:8, clicked:false, team: 0},
+    {id:9, clicked:false, team: 0},
   ];
 
 
@@ -23,19 +24,49 @@ function Table(nRow,nColumn){
       let char;
       if(team){
         char="o";
+        clickedCells[nCella-1].team=1;
+        checkWinner(1);
       }
       else{
         char="x";
+        clickedCells[nCella-1].team=2;
+        checkWinner(2);
       }
 
       document.getElementById(nCella).innerHTML= "<font color=\"red\"><td nameClass=\""+char+"\">"+char+"</td></font>"
+      {/*Bisogna cambiare il colore del font delle lettere */}
+    }
+  }
 
+  function checkWinner(team){
+    let ret = false;
+
+    {/*Combinazioni verticali*/}
+    ret = Object.is(clickedCells[0].team, team) && Object.is(clickedCells[3].team, team) && Object.is(clickedCells[6].team, team);
+    ret = ret || (Object.is(clickedCells[1].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[7].team, team));
+    ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[5].team, team) && Object.is(clickedCells[8].team, team));
+
+    {/*Combinazioni orizzontali*/}
+    ret = ret || (Object.is(clickedCells[0].team, team) && Object.is(clickedCells[1].team, team) && Object.is(clickedCells[2].team, team));
+    ret = ret || (Object.is(clickedCells[3].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[5].team, team));
+    ret = ret || (Object.is(clickedCells[6].team, team) && Object.is(clickedCells[7].team, team) && Object.is(clickedCells[8].team, team));
+
+    {/*Combinazioni diagonali*/}
+    ret = ret || (Object.is(clickedCells[0].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[8].team, team));
+    ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team));
+
+    {/*È possibile confontare diverse stringhe? */}
+    {/*È possibile fare che la funzione restituirsca un boolean? */}
+    if (ret){
+      isEndGame=true;
+      document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Ha vinto il team '+team+'</h3>';
+      
     }
   }
 
   return(
     <div>
-      <table>
+      <table id="mainTable">
         <thead></thead>
         <tbody>
           <tr>
@@ -70,6 +101,7 @@ export default function App(){
     <div>
       <h1>Tris Game</h1>
       <Table/>
+      <h3 id="labelWinner"></h3>
     </div>
     );
 };

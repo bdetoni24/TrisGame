@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import './Table.js';
 import './RecordTable.js';
-import './RamatchButton';
+import './RamatchButton.js';
 
 export default function App(){
 

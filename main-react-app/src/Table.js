@@ -62,18 +62,58 @@ export default function Table(props){
       let ret = false;
       if(nClick!=9){
         {/*Combinazioni verticali*/}
-        ret = Object.is(clickedCells[0].team, team) && Object.is(clickedCells[3].team, team) && Object.is(clickedCells[6].team, team);
-        ret = ret || (Object.is(clickedCells[1].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[7].team, team));
-        ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[5].team, team) && Object.is(clickedCells[8].team, team));
+        if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[3].team, team) && Object.is(clickedCells[6].team, team)){
+          ret=true;
+          document.getElementById("1").style.backgroundColor="green";
+          document.getElementById("4").style.backgroundColor="green";
+          document.getElementById("7").style.backgroundColor="green";
+        }
+        if(Object.is(clickedCells[1].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[7].team, team)){
+          ret=true;
+          document.getElementById("2").style.backgroundColor="green";
+          document.getElementById("5").style.backgroundColor="green";
+          document.getElementById("8").style.backgroundColor="green";
+        }
+        if(Object.is(clickedCells[2].team, team) && Object.is(clickedCells[5].team, team) && Object.is(clickedCells[8].team, team)){
+          ret=true;
+          document.getElementById("3").style.backgroundColor="green";
+          document.getElementById("6").style.backgroundColor="green";
+          document.getElementById("9").style.backgroundColor="green";
+        }
   
         {/*Combinazioni orizzontali*/}
-        ret = ret || (Object.is(clickedCells[0].team, team) && Object.is(clickedCells[1].team, team) && Object.is(clickedCells[2].team, team));
-        ret = ret || (Object.is(clickedCells[3].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[5].team, team));
-        ret = ret || (Object.is(clickedCells[6].team, team) && Object.is(clickedCells[7].team, team) && Object.is(clickedCells[8].team, team));
+        if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[1].team, team) && Object.is(clickedCells[2].team, team)){
+          ret=true;
+          document.getElementById("1").style.backgroundColor="green";
+          document.getElementById("2").style.backgroundColor="green";
+          document.getElementById("3").style.backgroundColor="green";
+        }
+        if(Object.is(clickedCells[3].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[5].team, team)){
+          ret=true;
+          document.getElementById("4").style.backgroundColor="green";
+          document.getElementById("5").style.backgroundColor="green";
+          document.getElementById("6").style.backgroundColor="green";
+        }
+        if(Object.is(clickedCells[6].team, team) && Object.is(clickedCells[7].team, team) && Object.is(clickedCells[8].team, team)){
+          ret=true;
+          document.getElementById("7").style.backgroundColor="green";
+          document.getElementById("8").style.backgroundColor="green";
+          document.getElementById("9").style.backgroundColor="green";
+        }
   
         {/*Combinazioni diagonali*/}
-        ret = ret || (Object.is(clickedCells[0].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[8].team, team));
-        ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team));
+        if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[8].team, team)){
+          ret=true;
+          document.getElementById("1").style.backgroundColor="green";
+          document.getElementById("5").style.backgroundColor="green";
+          document.getElementById("9").style.backgroundColor="green";
+        }
+        if(Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team)){
+          ret=true;
+          document.getElementById("3").style.backgroundColor="green";
+          document.getElementById("5").style.backgroundColor="green";
+          document.getElementById("7").style.backgroundColor="green";
+        }
   
         if (ret){
           setIsEndGame(true);
@@ -88,13 +128,15 @@ export default function Table(props){
     }
 
     function mouseOverCell(nCell){
-      if(!clickedCells[nCell-1].clicked){
+      if(!clickedCells[nCell-1].clicked&&!isEndGame){
         document.getElementById(nCell.toString()).style.backgroundColor = '#CACACA';
       }
     }
 
     function mouseOutCell(nCell){
-      document.getElementById(nCell.toString()).style.backgroundColor = 'white';
+      if(document.getElementById(nCell.toString()).style.backgroundColor != "green"){
+        document.getElementById(nCell.toString()).style.backgroundColor = 'white';
+      }
     }
 
     return(

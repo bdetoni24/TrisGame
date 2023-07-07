@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
 import App from './App.js'
+import SimpleTable from './SimpleTable';
 
 export default function Table(props){
     const [teamName,setTeamName] = useState('o')
@@ -178,28 +179,8 @@ export default function Table(props){
 
     return(
       <div>
-        <SimpleTable tableClicked/>
-        <table id="mainTable">
-          <thead></thead>
-          <tbody>
-            <tr>
-              <td id="1" onClick={()=>tableClicked(1)} onMouseOver={()=>mouseOverCell(1)} onMouseOut={()=>mouseOutCell(1)}></td>
-              <td id="2" onClick={()=>tableClicked(2)} onMouseOver={()=>mouseOverCell(2)} onMouseOut={()=>mouseOutCell(2)}></td>
-              <td id="3" onClick={()=>tableClicked(3)} onMouseOver={()=>mouseOverCell(3)} onMouseOut={()=>mouseOutCell(3)}></td>
-            </tr>
-            <tr>
-              <td id="4" onClick={()=>tableClicked(4)} onMouseOver={()=>mouseOverCell(4)} onMouseOut={()=>mouseOutCell(4)}></td>
-              <td id="5" onClick={()=>tableClicked(5)} onMouseOver={()=>mouseOverCell(5)} onMouseOut={()=>mouseOutCell(5)}></td>
-              <td id="6" onClick={()=>tableClicked(6)} onMouseOver={()=>mouseOverCell(6)} onMouseOut={()=>mouseOutCell(6)}></td>
-            </tr>
-            <tr>
-              <td id="7" onClick={()=>tableClicked(7)} onMouseOver={()=>mouseOverCell(7)} onMouseOut={()=>mouseOutCell(7)}></td>
-              <td id="8" onClick={()=>tableClicked(8)} onMouseOver={()=>mouseOverCell(8)} onMouseOut={()=>mouseOutCell(8)}></td>
-              <td id="9" onClick={()=>tableClicked(9)} onMouseOver={()=>mouseOverCell(9)} onMouseOut={()=>mouseOutCell(9)}></td>
-            </tr>
-          </tbody>
-          <tfoot></tfoot>
-        </table>
+        <SimpleTable tableClicked={tableClicked}mouseOverCell={mouseOverCell}mouseOutCell={mouseOutCell}/>
+        
       </div>
     );
   }

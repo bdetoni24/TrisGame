@@ -67,9 +67,9 @@ body{
 #rematchButton{
   background-color: white;
   color: midnightblue;
-  font-size: 50px;
+  font-size: 15px;
   height: 80px;
-  width: 80px;
+  width: 150px;
   border-radius: 10px;
 }
 
@@ -82,3 +82,5 @@ body{
   max-width: 100px;
   height: 100px;
 }
+
+

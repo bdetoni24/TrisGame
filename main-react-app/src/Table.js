@@ -42,77 +42,109 @@ export default function Table(props){
         console.log("Hai cliccato la cella "+nCella);
         team =! team;
         let char;
+        let cell = document.getElementById(nCella)
         if(team){
           char="o";
           clickedCells[nCella-1].team=1;
-          checkWinner(1);
+          cell.style.color = "green"
+          checkWinner(1,"green");
         }
         else{
           char="x";
           clickedCells[nCella-1].team=2;
-          checkWinner(2);
+          cell.style.color = "red"
+          checkWinner(2,"red");
         }
   
-        let cell = document.getElementById(nCella)
         cell.innerHTML = char
       }
     }
   
-    function checkWinner(team){
+    function checkWinner(team,color){
       let ret = false;
-      if(nClick!=9){
+      if(nClick<=9){
         {/*Combinazioni verticali*/}
         if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[3].team, team) && Object.is(clickedCells[6].team, team)){
           ret=true;
-          document.getElementById("1").style.backgroundColor="green";
-          document.getElementById("4").style.backgroundColor="green";
-          document.getElementById("7").style.backgroundColor="green";
+          document.getElementById("1").style.backgroundColor=color;
+          document.getElementById("4").style.backgroundColor=color;
+          document.getElementById("7").style.backgroundColor=color;
+          document.getElementById("1").style.color="white";
+          document.getElementById("4").style.color="white";
+          document.getElementById("7").style.color="white";
         }
         if(Object.is(clickedCells[1].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[7].team, team)){
           ret=true;
-          document.getElementById("2").style.backgroundColor="green";
-          document.getElementById("5").style.backgroundColor="green";
-          document.getElementById("8").style.backgroundColor="green";
+          document.getElementById("2").style.backgroundColor=color;
+          document.getElementById("5").style.backgroundColor=color;
+          document.getElementById("8").style.backgroundColor=color;
+          document.getElementById("2").style.color="white";
+          document.getElementById("5").style.color="white";
+          document.getElementById("8").style.color="white";
         }
         if(Object.is(clickedCells[2].team, team) && Object.is(clickedCells[5].team, team) && Object.is(clickedCells[8].team, team)){
           ret=true;
-          document.getElementById("3").style.backgroundColor="green";
-          document.getElementById("6").style.backgroundColor="green";
-          document.getElementById("9").style.backgroundColor="green";
+          document.getElementById("3").style.backgroundColor=color;
+          document.getElementById("6").style.backgroundColor=color;
+          document.getElementById("9").style.backgroundColor=color;
+          document.getElementById("3").style.color="white";
+          document.getElementById("6").style.color="white";
+          document.getElementById("9").style.color="white";
         }
   
         {/*Combinazioni orizzontali*/}
         if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[1].team, team) && Object.is(clickedCells[2].team, team)){
           ret=true;
-          document.getElementById("1").style.backgroundColor="green";
-          document.getElementById("2").style.backgroundColor="green";
-          document.getElementById("3").style.backgroundColor="green";
+          document.getElementById("1").style.backgroundColor=color;
+          document.getElementById("2").style.backgroundColor=color;
+          document.getElementById("3").style.backgroundColor=color;
+          document.getElementById("1").style.color="white";
+          document.getElementById("2").style.color="white";
+          document.getElementById("3").style.color="white";
         }
         if(Object.is(clickedCells[3].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[5].team, team)){
           ret=true;
-          document.getElementById("4").style.backgroundColor="green";
-          document.getElementById("5").style.backgroundColor="green";
-          document.getElementById("6").style.backgroundColor="green";
+          document.getElementById("4").style.backgroundColor=color;
+          document.getElementById("5").style.backgroundColor=color;
+          document.getElementById("6").style.backgroundColor=color
+          document.getElementById("4").style.color="white";
+          document.getElementById("5").style.color="white";
+          document.getElementById("6").style.color="white";
         }
         if(Object.is(clickedCells[6].team, team) && Object.is(clickedCells[7].team, team) && Object.is(clickedCells[8].team, team)){
           ret=true;
-          document.getElementById("7").style.backgroundColor="green";
-          document.getElementById("8").style.backgroundColor="green";
-          document.getElementById("9").style.backgroundColor="green";
+          document.getElementById("7").style.backgroundColor=color
+          document.getElementById("8").style.backgroundColor=color
+          document.getElementById("9").style.backgroundColor=color
+          document.getElementById("7").style.color="white";
+          document.getElementById("8").style.color="white";
+          document.getElementById("9").style.color="white";
         }
   
         {/*Combinazioni diagonali*/}
         if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[8].team, team)){
           ret=true;
-          document.getElementById("1").style.backgroundColor="green";
-          document.getElementById("5").style.backgroundColor="green";
-          document.getElementById("9").style.backgroundColor="green";
+          document.getElementById("1").style.backgroundColor=color
+          document.getElementById("5").style.backgroundColor=color
+          document.getElementById("9").style.backgroundColor=color
+          document.getElementById("1").style.color="white";
+          document.getElementById("5").style.color="white";
+          document.getElementById("9").style.color="white";
         }
         if(Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team)){
           ret=true;
-          document.getElementById("3").style.backgroundColor="green";
-          document.getElementById("5").style.backgroundColor="green";
-          document.getElementById("7").style.backgroundColor="green";
+          document.getElementById("3").style.backgroundColor=color
+          document.getElementById("5").style.backgroundColor=color
+          document.getElementById("7").style.backgroundColor=color
+          document.getElementById("3").style.color="white";
+          document.getElementById("5").style.color="white";
+          document.getElementById("7").style.color="white";
+        }
+
+        {/*Caso di pareggio */}
+        if((nClick===9)&&!ret){
+          setIsEndGame(true)
+          document.getElementById("labelWinner").innerHTML='Pareggio';
         }
   
         if (ret){
@@ -120,10 +152,6 @@ export default function Table(props){
           document.getElementById("labelWinner").innerHTML='Ha vinto il team  ' + (team?"o":"x");
           activateReset = true;
         }
-      }
-      else{
-        setIsEndGame(true);
-        document.getElementById("labelWinner").innerHTML='Pareggio';
       }
     }
 

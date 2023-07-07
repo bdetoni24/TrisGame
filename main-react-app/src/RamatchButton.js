@@ -4,7 +4,7 @@ export default function RematchButton(){
 
     return(
       <div>
-        <button id="rematchButton">↻</button>
+        <button id="rematchButton">new game</button>
       </div>
     );
   }

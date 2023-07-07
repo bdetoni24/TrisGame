@@ -6,7 +6,8 @@ export default function ResetButton(props){
         props.newReset()
     }
 
+    
     return(
-        <button id="resetButton" onClick={newReset}>reset</button>
+        <button id="resetButton" >reset</button>
     );
 }

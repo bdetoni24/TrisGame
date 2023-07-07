@@ -3,7 +3,6 @@ import './App.css';
 import ResetButton from './ResetButton.js'
 import Table from './Table.js';
 import RecordTable from'./RecordTable.js';
-import RematchButton from'./RamatchButton.js';
 
 export default function App(){
   const [rematchVisible, setRematchVisible] = useState(false)
@@ -15,9 +14,6 @@ export default function App(){
     setNeedReset(true)
   }
 
-  function notReset(){
-    setNeedReset(false)
-  }
 
   function buttonVisible(){
     console.log("attivazione bottone in corso")
@@ -42,9 +38,7 @@ export default function App(){
       <h1>Tris Game</h1>
       <RecordTable xWins={xWin} oWins={oWin}/>
       <ResetButton newReset={newReset}/>
-      <Table needReset={needReset} newXWin={newXWin} newOWin={newOWin} rematchButtonVisible={buttonVisible} rematchButtonhide={buttonHide}/>
-      <h3 id="labelWinner"></h3>
-      {rematchVisible?<RematchButton />:""}
+      <Table rematchVisible={rematchVisible} needReset={needReset} newXWin={newXWin} newOWin={newOWin} rematchButtonVisible={buttonVisible} rematchButtonhide={buttonHide}/>
     </div>
     );
 };

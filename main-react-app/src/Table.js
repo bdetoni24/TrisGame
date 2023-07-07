@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import './App.css';
 import App from './App.js'
 import SimpleTable from './SimpleTable';
+import RematchButton from './RamatchButton';
+import BannerWinner from './BannerWinner';
 
 export default function Table(props){
     const [teamName,setTeamName] = useState('o')
+    const [reset,setReset] = useState(false)
     const [isEndGame,setIsEndGame] = useState(false);
     let team=false;
     let activateReset= props.activateReset;
@@ -34,7 +37,6 @@ export default function Table(props){
       setIsEndGame(false);
       document.getElementById("labelWinner").innerHTML=''
       nClick=0;
-      props.rematchButtonHide();
     }
   
     function tableClicked(nCella){
@@ -153,7 +155,6 @@ export default function Table(props){
         {/*Caso di vittoria */}
         if (ret){
           setIsEndGame(true);
-          document.getElementById("labelWinner").innerHTML='Ha vinto il team  ' + (team?"o":"x");
           props.rematchButtonVisible();
           if(team){
             props.newOWin()
@@ -172,15 +173,17 @@ export default function Table(props){
     }
 
     function mouseOutCell(nCell){
-      if(document.getElementById(nCell.toString()).style.backgroundColor != "green"){
+      if(document.getElementById(nCell.toString()).style.backgroundColor !== "green"){
         document.getElementById(nCell.toString()).style.backgroundColor = 'white';
+        console.log('cambio colore in bianco')
       }
     }
 
     return(
       <div>
         <SimpleTable tableClicked={tableClicked}mouseOverCell={mouseOverCell}mouseOutCell={mouseOutCell}/>
-        
+        <BannerWinner/>
+        {props.rematchVisible?<RematchButton reset={reset}/>:""}
       </div>
     );
   }

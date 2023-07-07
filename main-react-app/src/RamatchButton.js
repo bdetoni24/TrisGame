@@ -1,10 +1,23 @@
 import './App.css'
 
-export default function RematchButton(){
+export default function RematchButton(props){
+  function onMouseOver(){
+    document.getElementById("rematchButton").style.color="#CACACA";
+}
 
-    return(
-      <div>
-        <h3 id="rematchButton"><u>Play Again</u></h3>
-      </div>
-    );
-  }
+function onMouseOut(){
+    console.log('mouse out')
+    document.getElementById("rematchButton").style.color="white";
+}
+
+function rematchGame(){
+
+}
+
+
+  return(
+    <div>
+      <h3 id="rematchButton" onClick={rematchGame} onMouseOver={onMouseOver} onMouseOut={onMouseOut}><u>Play Again</u></h3>
+    </div>
+  );
+}

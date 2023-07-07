@@ -64,6 +64,10 @@ body{
   min-height: 300px;
 }
 
+#rematchButton{
+  margin-top: 40px;
+}
+
 #mainTable td{
   color:midnightblue;
   background-color: white;

@@ -1,18 +1,7 @@
 import { useState } from 'react';
 import './App.css'
 
-export default function RecordTable(){
-    const [xWins,setXWins] = useState(0)
-    const [oWins,setOWins] = useState(0)
-
-    function xNewWin(){
-      setXWins(xWins+1);
-    }
-
-    function oNewWin(){
-      setOWins(oWins+1);
-    }
-
+export default function RecordTable(props){
 
     return(
       <table id="recordTable">
@@ -24,8 +13,8 @@ export default function RecordTable(){
         </thead>
         <tbody>
             <tr>
-                <td>{xWins}</td>
-                <td>{oWins}</td>
+                <td>{props.xWins}</td>
+                <td>{props.oWins}</td>
             </tr>
         </tbody>
       </table>

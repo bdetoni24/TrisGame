@@ -153,8 +153,13 @@ export default function Table(props){
         if (ret){
           setIsEndGame(true);
           document.getElementById("labelWinner").innerHTML='Ha vinto il team  ' + (team?"o":"x");
-          activateReset = true;
           props.rematchButtonVisible();
+          if(team){
+            props.newOWin()
+          }
+          else{
+            props.newXWin()
+          }
         }
       }
     }

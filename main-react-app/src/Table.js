@@ -145,8 +145,10 @@ export default function Table(props){
         if((nClick===9)&&!ret){
           setIsEndGame(true)
           document.getElementById("labelWinner").innerHTML='Pareggio';
+          props.rematchButtonVisible();
         }
-  
+        
+        {/*Caso di vittoria */}
         if (ret){
           setIsEndGame(true);
           document.getElementById("labelWinner").innerHTML='Ha vinto il team  ' + (team?"o":"x");

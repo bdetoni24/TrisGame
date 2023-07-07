@@ -6,20 +6,23 @@ import RecordTable from'./RecordTable.js';
 import RematchButton from'./RamatchButton.js';
 
 export default function App(){
-  const [state, setState] = useState(false)
+  const [rematchVisible, setRematchVisible] = useState(false)
+  let xWins=0;
+  let oWins=0;
+
 
   function buttonVisible(){
-    setState(true);
+    setRematchVisible(true);
   }
 
   return( 
     <div id="mainDiv">
       <h1>Tris Game</h1>
-      <RecordTable/>
+      <RecordTable />
       <ResetButton/>
-      <Table activateReset={state}/>
+      <Table rematchButtonVisible={buttonVisible}/>
       <h3 id="labelWinner"></h3>
-      {state?<RematchButton />:""}
+      {{rematchVisible}?<RematchButton />:""}
     </div>
     );
 };

@@ -2,6 +2,6 @@ import './App.css';
 
 export default function ResetButton(){
     return(
-        <button>reset</button>
+        <button id="resetButton">reset</button>
     );
 }

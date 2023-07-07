@@ -33,6 +33,7 @@ export default function Table(props){
       setIsEndGame(false);
       document.getElementById("labelWinner").innerHTML=''
       nClick=0;
+      props.rematchButtonHide();
     }
   
     function tableClicked(nCella){
@@ -153,6 +154,7 @@ export default function Table(props){
           setIsEndGame(true);
           document.getElementById("labelWinner").innerHTML='Ha vinto il team  ' + (team?"o":"x");
           activateReset = true;
+          props.rematchButtonVisible();
         }
       }
     }

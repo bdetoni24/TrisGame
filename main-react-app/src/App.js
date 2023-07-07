@@ -15,6 +15,7 @@ export default function App(){
   return( 
     <div id="mainDiv">
       <h1>Tris Game</h1>
+      <button onClick={buttonVisible}>cliccca qui</button>
       <RecordTable/>
       <Table activateReset={state}/>
       <h3 id="labelWinner"></h3>

@@ -9,7 +9,15 @@ export default function App(){
   const [rematchVisible, setRematchVisible] = useState(false)
   const [xWin,setXWin] = useState(0)
   const [oWin,setOWin] = useState(0)
+  const [needReset,setNeedReset] = useState(false)
 
+  function newReset(){
+    setNeedReset(true)
+  }
+
+  function notReset(){
+    setNeedReset(false)
+  }
 
   function buttonVisible(){
     console.log("attivazione bottone in corso")
@@ -33,8 +41,8 @@ export default function App(){
     <div id="mainDiv">
       <h1>Tris Game</h1>
       <RecordTable xWins={xWin} oWins={oWin}/>
-      <ResetButton/>
-      <Table newXWin={newXWin} newOWin={newOWin} rematchButtonVisible={buttonVisible} rematchButtonhide={buttonHide}/>
+      <ResetButton newReset={newReset}/>
+      <Table needReset={needReset} newXWin={newXWin} newOWin={newOWin} rematchButtonVisible={buttonVisible} rematchButtonhide={buttonHide}/>
       <h3 id="labelWinner"></h3>
       {rematchVisible?<RematchButton />:""}
     </div>

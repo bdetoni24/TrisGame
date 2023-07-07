@@ -1,7 +1,12 @@
 import './App.css';
 
-export default function ResetButton(){
+export default function ResetButton(props){
+
+    function newReset(){
+        props.newReset()
+    }
+
     return(
-        <button id="resetButton">reset</button>
+        <button id="resetButton" onClick={newReset}>reset</button>
     );
 }

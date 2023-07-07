@@ -178,6 +178,7 @@ export default function Table(props){
 
     return(
       <div>
+        <SimpleTable tableClicked/>
         <table id="mainTable">
           <thead></thead>
           <tbody>

@@ -6,7 +6,6 @@ import RematchButton from'./RamatchButton.js';
 
 export default function App(){
   const [state, setState] = useState(false)
-  let xWins = 
 
   function buttonVisible(){
     setState(true);

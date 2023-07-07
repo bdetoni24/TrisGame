@@ -72,7 +72,7 @@ export default function Table(nRow,nColumn){
   
         if (ret){
           isEndGame=true;
-          document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Ha vinto il team '+team+'</h3>';
+          document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Ha vinto il team ${{team?"o":"x"}}</h3>';
         }
       }
       else{

@@ -6,6 +6,7 @@ import RematchButton from'./RamatchButton.js';
 
 export default function App(){
   const [state, setState] = useState(false)
+  let xWins = 
 
   function buttonVisible(){
     setState(true);
@@ -15,9 +16,9 @@ export default function App(){
     <div id="mainDiv">
       <h1>Tris Game</h1>
       <RecordTable/>
-      <Table/>
+      <Table activateReset={state}/>
       <h3 id="labelWinner"></h3>
-      {state?<RematchButton/>:""}
+      {state?<RematchButton />:""}
     </div>
     );
 };

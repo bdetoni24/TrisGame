@@ -5,6 +5,15 @@ export default function RecordTable(){
     const [xWins,setXWins] = useState(0)
     const [oWins,setOWins] = useState(0)
 
+    function xNewWin(){
+      setXWins(xWins+1);
+    }
+
+    function oNewWin(){
+      setOWins(oWins+1);
+    }
+
+
     return(
       <table id="recordTable">
         <thead>

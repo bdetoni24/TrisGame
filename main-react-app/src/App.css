@@ -1,4 +1,5 @@
 * {
+  user-select: none;
   background-color: midnightblue;
   color:white;
   text-align: center;
@@ -46,6 +47,7 @@ body{
 
 
 #mainTable{
+  cursor: pointer;
   background-color: transparent;
   margin-top: 50px;
   width: 33%;

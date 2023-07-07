@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import './App.css';
 import App from './App.js'
 
-export default function Table(nRow,nColumn){
+export default function Table(props){
     const [teamName,setTeamName] = useState('o')
+    const [isEndGame,setIsEndGame] = useState(false);
     let team=false;
+    let activateReset= props.activateReset;
     let showButton=false;
     let nClick=0;
-    let isEndGame=false;
     let clickedCells = [
       {id:1, clicked:false, team: 0},
       {id:2, clicked:false, team: 0},
@@ -24,9 +25,13 @@ export default function Table(nRow,nColumn){
       let i=0;
       for(i=0;i<8;i++){
         clickedCells[i].team=0;
-        document.getElementById(i).innerHTML = '<td id="'+i+'" onClick={()=>tableClicked('+i+')}>'+i+'</td>';
+        clickedCells[i].clicked=false;
+        console.log(document.getElementById((i+1).toString()).innerHTML)
+        document.getElementById((i+1).toString()).innerHTML = '';
         
       }
+      setIsEndGame(false);
+      document.getElementById("labelWinner").innerHTML=''
       nClick=0;
     }
   
@@ -34,8 +39,8 @@ export default function Table(nRow,nColumn){
       if(!clickedCells[nCella-1].clicked && !isEndGame){
         nClick++;
         clickedCells[nCella-1].clicked=true;
+        console.log("Hai cliccato la cella "+nCella);
         team =! team;
-        console.log("È stata cliccata la casella "+nCella);
         let char;
         if(team){
           char="o";
@@ -71,14 +76,25 @@ export default function Table(nRow,nColumn){
         ret = ret || (Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team));
   
         if (ret){
-          isEndGame=true;
-          document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Ha vinto il team ${{team?"o":"x"}}</h3>';
+          setIsEndGame(true);
+          document.getElementById("labelWinner").innerHTML='Ha vinto il team  ' + (team?"o":"x");
+          activateReset = true;
         }
       }
       else{
-        isEndGame=true;
-        document.getElementById("labelWinner").innerHTML='<h3 id="labelWinner">Pareggio</h3>';
+        setIsEndGame(true);
+        document.getElementById("labelWinner").innerHTML='Pareggio';
       }
+    }
+
+    function mouseOverCell(nCell){
+      if(!clickedCells[nCell-1].clicked){
+        document.getElementById(nCell.toString()).style.backgroundColor = '#CACACA';
+      }
+    }
+
+    function mouseOutCell(nCell){
+      document.getElementById(nCell.toString()).style.backgroundColor = 'white';
     }
 
     return(
@@ -87,19 +103,19 @@ export default function Table(nRow,nColumn){
           <thead></thead>
           <tbody>
             <tr>
-              <td id="1" style={{color: isEndGame?'red,':'blue,'}} onClick={()=>tableClicked(1)}></td>
-              <td id="2" onClick={()=>tableClicked(2)}></td>
-              <td id="3" onClick={()=>tableClicked(3)}></td>
+              <td id="1" onClick={()=>tableClicked(1)} onMouseOver={()=>mouseOverCell(1)} onMouseOut={()=>mouseOutCell(1)}></td>
+              <td id="2" onClick={()=>tableClicked(2)} onMouseOver={()=>mouseOverCell(2)} onMouseOut={()=>mouseOutCell(2)}></td>
+              <td id="3" onClick={()=>tableClicked(3)} onMouseOver={()=>mouseOverCell(3)} onMouseOut={()=>mouseOutCell(3)}></td>
             </tr>
             <tr>
-              <td id="4" onClick={()=>tableClicked(4)}></td>
-              <td id="5" onClick={()=>tableClicked(5)}></td>
-              <td id="6" onClick={()=>tableClicked(6)}></td>
+              <td id="4" onClick={()=>tableClicked(4)} onMouseOver={()=>mouseOverCell(4)} onMouseOut={()=>mouseOutCell(4)}></td>
+              <td id="5" onClick={()=>tableClicked(5)} onMouseOver={()=>mouseOverCell(5)} onMouseOut={()=>mouseOutCell(5)}></td>
+              <td id="6" onClick={()=>tableClicked(6)} onMouseOver={()=>mouseOverCell(6)} onMouseOut={()=>mouseOutCell(6)}></td>
             </tr>
             <tr>
-              <td id="7" onClick={()=>tableClicked(7)}></td>
-              <td id="8" onClick={()=>tableClicked(8)}></td>
-              <td id="9" onClick={()=>tableClicked(9)}></td>
+              <td id="7" onClick={()=>tableClicked(7)} onMouseOver={()=>mouseOverCell(7)} onMouseOut={()=>mouseOutCell(7)}></td>
+              <td id="8" onClick={()=>tableClicked(8)} onMouseOver={()=>mouseOverCell(8)} onMouseOut={()=>mouseOutCell(8)}></td>
+              <td id="9" onClick={()=>tableClicked(9)} onMouseOver={()=>mouseOverCell(9)} onMouseOut={()=>mouseOutCell(9)}></td>
             </tr>
           </tbody>
           <tfoot></tfoot>

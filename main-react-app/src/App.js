@@ -7,12 +7,15 @@ import RematchButton from'./RamatchButton.js';
 
 export default function App(){
   const [rematchVisible, setRematchVisible] = useState(false)
-  let xWins=0;
-  let oWins=0;
-
 
   function buttonVisible(){
+    console.log("attivazione bottone in corso")
     setRematchVisible(true);
+  }
+
+  function buttonHide(){
+    console.log("bottone nascosto")
+    setRematchVisible(false);
   }
 
   return( 
@@ -20,9 +23,9 @@ export default function App(){
       <h1>Tris Game</h1>
       <RecordTable />
       <ResetButton/>
-      <Table rematchButtonVisible={buttonVisible}/>
+      <Table rematchButtonVisible={buttonVisible} rematchButtonhide={buttonHide}/>
       <h3 id="labelWinner"></h3>
-      {{rematchVisible}?<RematchButton />:""}
+      {rematchVisible?<RematchButton />:""}
     </div>
     );
 };

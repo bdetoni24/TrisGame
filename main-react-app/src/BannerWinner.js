@@ -1,7 +1,7 @@
 
 
-export default function BannerWinner(){
+export default function BannerWinner(props){
     return(
-        <h3>Ha vinto ...</h3>
+        <h3>{props.bannerWinner}</h3>
     );
 }

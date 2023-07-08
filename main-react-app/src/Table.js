@@ -9,6 +9,7 @@ export default function Table(props){
     const [teamName,setTeamName] = useState('o')
     const [reset,setReset] = useState(false)
     const [isEndGame,setIsEndGame] = useState(false);
+    let bannerWinner = "";
     let team=false;
     let activateReset= props.activateReset;
     let showButton=false;
@@ -30,12 +31,11 @@ export default function Table(props){
       for(i=0;i<8;i++){
         clickedCells[i].team=0;
         clickedCells[i].clicked=false;
-        console.log(document.getElementById((i+1).toString()).innerHTML)
-        document.getElementById((i+1).toString()).innerHTML = '';
-        
+        let cell = document.getElementById((i+1).toString())
+        cell.innerHTML = '';
+        cell.style.backgroundColor = "white"
       }
       setIsEndGame(false);
-      document.getElementById("labelWinner").innerHTML=''
       nClick=0;
     }
   
@@ -183,7 +183,7 @@ export default function Table(props){
       <div>
         <SimpleTable tableClicked={tableClicked}mouseOverCell={mouseOverCell}mouseOutCell={mouseOutCell}/>
         <BannerWinner/>
-        {props.rematchVisible?<RematchButton reset={reset}/>:""}
+        {props.rematchVisible?<RematchButton rematchGame={tableReset}/>:""}
       </div>
     );
   }

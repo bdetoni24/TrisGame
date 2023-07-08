@@ -45,6 +45,9 @@ body{
   color: midnightblue;
 }
 
+#rematchButton{
+  cursor: pointer;
+}
 
 #mainTable{
   cursor: pointer;

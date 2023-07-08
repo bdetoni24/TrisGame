@@ -156,7 +156,7 @@ export default function Table(props){
         if (ret){
           setIsEndGame(true);
           props.rematchButtonVisible();
-          if(team){
+          if(team===1){
             props.newOWin()
           }
           else{
@@ -173,7 +173,7 @@ export default function Table(props){
     }
 
     function mouseOutCell(nCell){
-      if(document.getElementById(nCell.toString()).style.backgroundColor !== "green"){
+      if((document.getElementById(nCell.toString()).style.backgroundColor !== "green")&&(document.getElementById(nCell.toString()).style.backgroundColor !== "red") ){
         document.getElementById(nCell.toString()).style.backgroundColor = 'white';
         console.log('cambio colore in bianco')
       }

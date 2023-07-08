@@ -1,2 +1,12 @@
-# How to install
-It's a React App, so you need to create a local server. You can do it installing node.js from his official website..
+# Motivation
+Project assigned to me during the PCTO period (alternanza scuola-lavoro) during the month of July 2023. It was my first time programming with the React framework, so I did the TicTacToe to test the language and to learn the new language.
+# Requirements
+- Node.js installed (v18.16.1)
+# How to run
+1. Clone this project
+2. Open a new Terminal and go inside the repository
+3. Run 'cd main-react-app'
+4. Run 'npm start'
+At this point the project itself shold open a new local server and open a new browser windows, usually 'http://localhost:3000/' but the port can change if you have other local server already open.
+# Ways to improve
+- [ ] Online multiplayer....

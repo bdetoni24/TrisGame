@@ -1,6 +1,6 @@
 
 export default function SimpleTable(props){
-
+    {/*Posso integrare già qua le funcioni */}
     return(
         <div>
             <table id="mainTable">

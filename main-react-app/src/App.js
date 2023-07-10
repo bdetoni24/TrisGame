@@ -50,7 +50,7 @@ export default function App(){
   function resetRecord(){
     setXWin(0)
     setOWin(0)
-  }
+  } 
 
   return( 
     <div id="mainDiv">

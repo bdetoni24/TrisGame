@@ -52,7 +52,7 @@ export default function App(){
 
   return( 
     <div id="mainDiv">
-      <h1>Tris Game</h1>
+      <h1 id="mainTitle">Tris Game</h1>
       <RecordTable xWins={xWin} oWins={oWin}/>
       <ResetButton resetRecord={resetRecord}/>
       <Table newXWin={newXWin} newOWin={newOWin}/>

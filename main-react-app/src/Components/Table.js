@@ -194,7 +194,7 @@ export default function Table(props){
 
     return(
       <div>
-        <SimpleTable tableClicked={tableClicked}mouseOverCell={mouseOverCell}mouseOutCell={mouseOutCell}/>
+        <SimpleTable tableClicked={tableClicked} mouseOverCell={mouseOverCell} mouseOutCell={mouseOutCell}/>
         <BannerWinner bannerWinner={labelWinner}/>
         {rematchVisible?<RematchButton rematchGame={tableRematch}/>:""}
       </div>

@@ -14,7 +14,7 @@ At this point the project itself shold open a new local server and open a new br
 # Ways to improve
 - [X] Add a record table
 - [X] Save record table's data after a refresh
-- [ ] Make possible for the user to choose witch team he want
+- [ ] Make possible for users to choose witch team they want
 - [ ] Make a limit time to make a move
 - [ ] Better table's data cells managment
 - [ ] Multiplayer online

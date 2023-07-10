@@ -10,6 +10,7 @@ export default function Table(props){
     const [reset,setReset] = useState(false)
     const [isEndGame,setIsEndGame] = useState(false);
     const [rematchVisible, setRematchVisible] = useState(false)
+    const [labelWinner,setLabelWinner] = useState('')
     let bannerWinner = "";
     let team=false;
     let activateReset= props.activateReset;
@@ -29,7 +30,7 @@ export default function Table(props){
   
     function tableRematch(){
       let i=0;
-      for(i=0;i<8;i++){
+      for(i=0;i<=8;i++){
         clickedCells[i].team=0;
         clickedCells[i].clicked=false;
         let cell = document.getElementById((i+1).toString())
@@ -39,6 +40,7 @@ export default function Table(props){
       setIsEndGame(false);
       nClick=0;
       setRematchVisible(false)
+      setLabelWinner('')
     }
   
     function tableClicked(nCella){
@@ -150,7 +152,7 @@ export default function Table(props){
         {/*Caso di pareggio */}
         if((nClick===9)&&!ret){
           setIsEndGame(true)
-          document.getElementById("labelWinner").innerHTML='Pareggio';
+          setLabelWinner('Pareggio')
           setRematchVisible(true)
         }
         
@@ -159,9 +161,11 @@ export default function Table(props){
           setIsEndGame(true);
           if(team===1){
             props.newOWin()
+            setLabelWinner('Ha vinto O')
           }
           else{
             props.newXWin()
+            setLabelWinner('Ha vinto X')
           }
           setRematchVisible(true)
         }
@@ -183,7 +187,7 @@ export default function Table(props){
     return(
       <div>
         <SimpleTable tableClicked={tableClicked}mouseOverCell={mouseOverCell}mouseOutCell={mouseOutCell}/>
-        <BannerWinner/>
+        <BannerWinner bannerWinner={labelWinner}/>
         {rematchVisible?<RematchButton rematchGame={tableRematch}/>:""}
       </div>
     );

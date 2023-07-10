@@ -9,4 +9,9 @@ Project assigned to me during the PCTO period (alternanza scuola-lavoro) during 
 4. Run 'npm start'
 At this point the project itself shold open a new local server and open a new browser windows, usually 'http://localhost:3000/' but the port can change if you have other local server already open.
 # Ways to improve
-- [ ] Online multiplayer....
+- [X] Add a record table
+- [X] Save record table's data after a refresh
+- [ ] Make possible for the user to choose witch team he want
+- [ ] Make a limit time to make a move
+- [ ] Better table's data cells managment
+- [ ] Multiplayer online

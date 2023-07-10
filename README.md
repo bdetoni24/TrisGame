@@ -1,6 +1,6 @@
 # Motivation
 Project assigned to me during the PCTO period (alternanza scuola-lavoro) during the month of July 2023. It was my first time programming with the React framework, so I did the TicTacToe to test the language and to learn the new language.
-![image](https://github.com/bdetoni24/TrisGame/assets/138591220/bfb82e8c-9e47-4749-b660-9a9d4576673d)
+![image](https://github.com/bdetoni24/TrisGame/assets/138591220/6885b740-257f-4cd9-895c-1784e650b4b5)
 # Requirements
 - Node.js installed (v18.16.1)
 # How to run

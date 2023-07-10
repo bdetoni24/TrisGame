@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import App from './App.js'
 import SimpleTable from './SimpleTable';
-import RematchButton from './RamatchButton';
+import RematchButton from './RematchButton';
 import BannerWinner from './BannerWinner';
 
 export default function Table(props){

@@ -47,11 +47,16 @@ export default function App(){
     setOWin(oWin+1)
   }
 
+  function resetRecord(){
+    setXWin(0)
+    setOWin(0)
+  }
+
   return( 
     <div id="mainDiv">
       <h1>Tris Game</h1>
       <RecordTable xWins={xWin} oWins={oWin}/>
-      <ResetButton />
+      <ResetButton resetRecord={resetRecord}/>
       <Table newXWin={newXWin} newOWin={newOWin}/>
     </div>
     );

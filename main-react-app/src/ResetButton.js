@@ -8,6 +8,6 @@ export default function ResetButton(props){
 
     
     return(
-        <button id="resetButton" >reset</button>
+        <button id="resetButton" onClick={props.resetRecord}>reset</button>
     );
 }

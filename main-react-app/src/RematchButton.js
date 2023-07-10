@@ -13,7 +13,6 @@ export default function RematchButton(props){
       document.getElementById("rematchButton").style.color="white";
   }
 
-
   return(
     <div>
       <h3 id="rematchButton" onClick={props.rematchGame} onMouseOver={onMouseOver} onMouseOut={onMouseOut}><u>Play Again</u></h3>

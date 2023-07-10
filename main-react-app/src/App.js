@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import ResetButton from './ResetButton.js'
 import Table from './Table.js';
@@ -14,25 +14,30 @@ import RecordTable from'./RecordTable.js';
 */}
 
 export default function App(){
-  const [rematchVisible, setRematchVisible] = useState(false)
   const [xWin,setXWin] = useState(0)
   const [oWin,setOWin] = useState(0)
-  const [needReset,setNeedReset] = useState(false)
 
-  function newReset(){
-    setNeedReset(true)
-  }
+  useEffect(() => {
+    const savedXWin = parseInt(localStorage.getItem('xWin'), 10)
+    const savedOWin = parseInt(localStorage.getItem('oWin'), 10)
 
+    if(savedXWin){
+      setXWin(savedXWin)
+    }
+    if(savedOWin){
+      setOWin(savedOWin)
+    }
+  },[]);
 
-  function buttonVisible(){
-    console.log("attivazione bottone in corso")
-    setRematchVisible(true);
-  }
+  useEffect(() => {
+    localStorage.setItem('xWin',xWin)
+    console.log('salvataggio di xWin: '+xWin)
+  }, [xWin]);
 
-  function buttonHide(){
-    console.log("bottone nascosto")
-    setRematchVisible(false);
-  }
+  useEffect(() => {
+    localStorage.setItem('oWin',oWin)
+    console.log('salvataggio di oWin: '+oWin)
+  }, [oWin]);
 
   function newXWin(){
     setXWin(xWin+1)
@@ -46,8 +51,8 @@ export default function App(){
     <div id="mainDiv">
       <h1>Tris Game</h1>
       <RecordTable xWins={xWin} oWins={oWin}/>
-      <ResetButton newReset={newReset}/>
-      <Table rematchVisible={rematchVisible} needReset={needReset} newXWin={newXWin} newOWin={newOWin} rematchButtonVisible={buttonVisible} rematchButtonhide={buttonHide}/>
+      <ResetButton />
+      <Table newXWin={newXWin} newOWin={newOWin}/>
     </div>
     );
 };

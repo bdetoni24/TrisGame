@@ -9,6 +9,7 @@ export default function Table(props){
     const [teamName,setTeamName] = useState('o')
     const [reset,setReset] = useState(false)
     const [isEndGame,setIsEndGame] = useState(false);
+    const [rematchVisible, setRematchVisible] = useState(false)
     let bannerWinner = "";
     let team=false;
     let activateReset= props.activateReset;
@@ -26,7 +27,7 @@ export default function Table(props){
       {id:9, clicked:false, team: 0},
     ];
   
-    function tableReset(){
+    function tableRematch(){
       let i=0;
       for(i=0;i<8;i++){
         clickedCells[i].team=0;
@@ -37,6 +38,7 @@ export default function Table(props){
       }
       setIsEndGame(false);
       nClick=0;
+      setRematchVisible(false)
     }
   
     function tableClicked(nCella){
@@ -149,19 +151,19 @@ export default function Table(props){
         if((nClick===9)&&!ret){
           setIsEndGame(true)
           document.getElementById("labelWinner").innerHTML='Pareggio';
-          props.rematchButtonVisible();
+          setRematchVisible(true)
         }
         
         {/*Caso di vittoria */}
         if (ret){
           setIsEndGame(true);
-          props.rematchButtonVisible();
           if(team===1){
             props.newOWin()
           }
           else{
             props.newXWin()
           }
+          setRematchVisible(true)
         }
       }
     }
@@ -175,7 +177,6 @@ export default function Table(props){
     function mouseOutCell(nCell){
       if((document.getElementById(nCell.toString()).style.backgroundColor !== "green")&&(document.getElementById(nCell.toString()).style.backgroundColor !== "red") ){
         document.getElementById(nCell.toString()).style.backgroundColor = 'white';
-        console.log('cambio colore in bianco')
       }
     }
 
@@ -183,7 +184,7 @@ export default function Table(props){
       <div>
         <SimpleTable tableClicked={tableClicked}mouseOverCell={mouseOverCell}mouseOutCell={mouseOutCell}/>
         <BannerWinner/>
-        {props.rematchVisible?<RematchButton rematchGame={tableReset}/>:""}
+        {rematchVisible?<RematchButton rematchGame={tableRematch}/>:""}
       </div>
     );
   }

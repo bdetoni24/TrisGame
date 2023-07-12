@@ -81,7 +81,7 @@ export default function Table(props){
           document.getElementById("4").style.color="white"
           document.getElementById("7").style.color="white"
         }
-        if(Object.is(clickedCells[1].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[7].team, team)){
+        else if(Object.is(clickedCells[1].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[7].team, team)){
           ret=true
           document.getElementById("2").style.backgroundColor=color
           document.getElementById("5").style.backgroundColor=color
@@ -90,7 +90,7 @@ export default function Table(props){
           document.getElementById("5").style.color="white"
           document.getElementById("8").style.color="white"
         }
-        if(Object.is(clickedCells[2].team, team) && Object.is(clickedCells[5].team, team) && Object.is(clickedCells[8].team, team)){
+        else if(Object.is(clickedCells[2].team, team) && Object.is(clickedCells[5].team, team) && Object.is(clickedCells[8].team, team)){
           ret=true
           document.getElementById("3").style.backgroundColor=color
           document.getElementById("6").style.backgroundColor=color
@@ -101,7 +101,7 @@ export default function Table(props){
         }
   
         //Combinazioni orizzontali
-        if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[1].team, team) && Object.is(clickedCells[2].team, team)){
+        else if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[1].team, team) && Object.is(clickedCells[2].team, team)){
           ret=true
           document.getElementById("1").style.backgroundColor=color
           document.getElementById("2").style.backgroundColor=color
@@ -110,7 +110,7 @@ export default function Table(props){
           document.getElementById("2").style.color="white"
           document.getElementById("3").style.color="white"
         }
-        if(Object.is(clickedCells[3].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[5].team, team)){
+        else if(Object.is(clickedCells[3].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[5].team, team)){
           ret=true
           document.getElementById("4").style.backgroundColor=color
           document.getElementById("5").style.backgroundColor=color
@@ -119,7 +119,7 @@ export default function Table(props){
           document.getElementById("5").style.color="white"
           document.getElementById("6").style.color="white"
         }
-        if(Object.is(clickedCells[6].team, team) && Object.is(clickedCells[7].team, team) && Object.is(clickedCells[8].team, team)){
+        else if(Object.is(clickedCells[6].team, team) && Object.is(clickedCells[7].team, team) && Object.is(clickedCells[8].team, team)){
           ret=true
           document.getElementById("7").style.backgroundColor=color
           document.getElementById("8").style.backgroundColor=color
@@ -130,7 +130,7 @@ export default function Table(props){
         }
   
         //Combinazioni diagonali
-        if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[8].team, team)){
+        else if(Object.is(clickedCells[0].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[8].team, team)){
           ret=true
           document.getElementById("1").style.backgroundColor=color
           document.getElementById("5").style.backgroundColor=color
@@ -139,7 +139,7 @@ export default function Table(props){
           document.getElementById("5").style.color="white"
           document.getElementById("9").style.color="white"
         }
-        if(Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team)){
+        else if(Object.is(clickedCells[2].team, team) && Object.is(clickedCells[4].team, team) && Object.is(clickedCells[6].team, team)){
           ret=true
           document.getElementById("3").style.backgroundColor=color
           document.getElementById("5").style.backgroundColor=color
